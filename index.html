@@ -1,0 +1,365 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		#container	{
+			z-index: 1;
+			width: 900px;
+			margin: auto;
+			border: 1px solid red;
+		}
+		section {
+			min-height: 500px;
+			overflow: hidden;
+			clear: both;
+			margin-bottom: 200px;
+		}
+		.js-background-1,
+		.js-background-2,
+		.js-background-3 {
+			position: absolute;
+			top: 0;
+			bottom:0;
+			left: 0;
+			width: 100%;
+			height: 3800px;
+			opacity: .5;
+			z-index: -1;
+		}
+		.js-background-1 { background: transparent url(assets/img/bubble1.png) top left 0 repeat; } 
+		.js-background-2 { background: transparent url(assets/img/bubble1.png) top left 0 repeat; }
+		.js-background-3 { background: transparent url(assets/img/bubble2.png) top left 0 repeat; }
+
+		#carousel li {
+			border: 3px solid red;
+		}
+		#carousel li img,
+		#carousel li video {
+			width: 100%;
+			height: 100%;
+		}
+		.roundabout-holder {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      height: 165px;
+      width: 300px;
+      z-index: 10;
+   }
+   .roundabout-moveable-item {
+      cursor: pointer;
+   }
+   .roundabout-in-focus {
+      cursor: auto;
+   }
+
+   .slider {
+  margin: 10px 0;
+  width: 580px; /* Update to your slider width */
+  height: 250px; /* Update to your slider height */
+  position: relative;
+  overflow: hidden;
+}
+
+.slider li {
+  display: none;
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+}
+
+.example1 {
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .example1 li {
+            height: 100;
+            width: 300px;
+        }
+        .example1 span {
+        	height: 200px;
+        }
+        
+        li {
+            text-align:center;
+        }
+        
+        li span {
+            display:block;
+            margin:5px;
+            background:red;
+        }
+        
+        .next,
+        .prev {
+            cursor:pointer;
+        }
+
+        
+        .carousel-pagination li {
+            display:block;
+            width:10px;
+            height:10px;
+            margin-right:5px;
+            cursor:pointer;
+            float:left;
+            background:#333;
+        }
+        
+        .carousel-pagination .carousel-pagination-active {
+            background:#ff0000;
+        }
+
+        #round-about {
+        	position: relative;
+        }
+        #round-about span {
+        	position: absolute;
+        	top: 50%;
+        	border: 3px solid black;
+        	z-index: 20;
+        	background: #fff;
+        }
+        #round-about .prev-round {
+        	left: 260px;
+        }
+        #round-about .next-round {
+        	right: 260px;
+        }
+
+        nav {
+        	position: fixed;
+        	height: 80px;
+        	margin: auto;
+        	background: #fff;
+        	z-index: 100;
+        	right:50%;
+		    margin-right:-495px;
+		    width:990px;
+        }
+        nav ul {
+        	list-style: none;
+        }
+        nav ul li {
+        	display: inline;
+        }
+
+#fixed-bg {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: -2;
+  /* fallback */
+  background-color: #1a82f7;
+  background: url(images/linear_bg_2.png);
+  background-repeat: repeat-x;
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #2F2727, #1a82f7);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #2F2727, #1a82f7);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #2F2727, #1a82f7);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #2F2727, #1a82f7);
+}
+	</style>
+</head>
+<body>
+	<div id="fixed-bg">
+	</div>
+	<div class="js-background-1 container" data-type="background" ></div>
+	<div class="js-background-2 container" data-type="background" ></div>
+	<div class="js-background-3 container" data-type="background" ></div>
+	
+	<nav>
+			<ul>
+				<li id="logo">Big logo</li>
+				<li>menu</li>
+				<li>menu</li>
+				<li>menu</li>
+			</ul>
+		</nav>
+	<div id="container">
+		
+		<div id="inner-content">
+			<section><h2>Home</h2>
+
+				<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div>
+				<div id="round-about">
+					<ul id="carousel">
+					   <li>  
+						   	<video id="video1" controls width="300">
+						    <source src="assets/video/mov_bbb.mp4" type="video/mp4">
+						    <source src="assets/video/mov_bbb.ogg" type="video/ogg">
+						    Your browser does not support HTML5 video.
+						  </video>
+						</li>
+						<li>  
+								<video id="video2" controls width="300">
+						    <source src="assets/video/mov_bbb.mp4" type="video/mp4">
+						    <source src="assets/video/mov_bbb.ogg" type="video/ogg">
+						    Your browser does not support HTML5 video.
+						  </video>
+						</li>
+					   <li><img src="assets/img/image.jpg"></li>
+					   <li><img src="assets/img/image.jpg"></li>
+					   <li><img src="assets/img/image.jpg"></li>
+					   <li><img src="assets/img/image.jpg"></li>
+					   <li><img src="assets/img/image.jpg"></li>
+					   <li><img src="assets/img/image.jpg"></li>
+					</ul>
+					<span class="prev-round">prev</span>
+    				<span class="next-round">next</span>
+				</div>
+					
+					
+
+<h2>Promo</h2>
+<div id="home-wrapper">
+<ul class="example1" id="home-promo">
+        <li><span>1</span></li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+        <li><span>6</span></li>
+        <li><span>7</span></li>
+        <li><span>8</span></li>
+        <li><span>9</span></li>
+        <li><span>10</span></li>
+        <li><span>11</span></li>
+    </ul>
+    <span class="prev">prev</span>
+    <span class="next">next</span>
+</div>
+    
+		        </div>
+
+			</section>
+			<section><h2>Characters</h2>
+				<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div>
+			</section>
+			<section><h2>How to Play</h2>
+				<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div>
+			</section>
+			<section><h2>Worlds</h2>
+				<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div>
+
+				<div id="character-wrapper">
+<ul class="example1" id="character-slide">
+        <li><span>1</span></li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+        <li><span>6</span></li>
+        <li><span>7</span></li>
+        <li><span>8</span></li>
+        <li><span>9</span></li>
+        <li><span>10</span></li>
+        <li><span>11</span></li>
+    </ul>
+    <span class="prev">prev</span>
+    <span class="next">next</span>
+</div>
+    
+		        </div>
+
+			</section>
+			<section><h2>Spotpass</h2>
+				<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div>
+			</section>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="assets/js/jquery.roundabout.js"></script>
+	<script type="text/javascript" src="assets/js/simple.carousel.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#carousel').roundabout({
+				btnNext: ".next-round",
+				btnPrev: ".prev-round",
+				minOpacity: 0,
+				minScale: 0.2,
+				tilt: -2.1
+			});
+
+			$("#home-promo").simplecarousel({
+                width:200,
+                height:100,
+                visible: 3,
+                auto: 0,
+                next: $('#home-wrapper .next'),
+                prev: $('#home-wrapper .prev')
+            });
+
+            $("#character-slide").simplecarousel({
+                width:200,
+                height:100,
+                visible: 3,
+                auto: 0,
+                next: $('#character-wrapper .next'),
+                prev: $('#character-wrapper .prev')
+            });
+		});
+	</script>
+
+	<script type="text/javascript">
+		var $window = $(window); 
+		var velocity = 0.4; 
+		function update(){ 
+			var scrolled = $(window).scrollTop();
+    		// $('.js-background-1').css('top', -(scrolled * 0.2) + 'px');
+    		// $('.js-background-2').css('top', -(scrolled * 4) + 'px');
+    		//var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
+             
+            // Put together our final background position
+            //var coords = '50% '+ yPos + 'px';
+    		$('.js-background-1').css({ backgroundPosition: '50% '+ -(scrolled * 0.1) + 'px'});
+    		$('.js-background-2').css({ backgroundPosition: '50% '+ -(scrolled * 0.5) + 'px'});
+    		$('.js-background-3').css({ backgroundPosition: '50% '+ -(scrolled * 4) + 'px'});
+			// $('.container').each(function() { 
+			// 	$(this).css('top', -(scrolled * 0.2) + 'px');
+			// 	//$(this).css('backgroundPosition', '50% ' + Math.round((height - pos) * velocity) + 'px'); 
+			// 	// var $element = $(this); 
+			// 	// var height = 100; 
+			// 	// var velocity = $element[0].getAttribute('data-velocity');
+			// 	// 
+			// }); 
+		}; 
+		$window.bind('scroll', update);
+
+		// $(document).ready(function(){
+		//     $('section[data-type="background"]').each(function(){
+		//         var $bgobj = $(this); // assigning the object
+		     
+		//         $(window).scroll(function() {
+		//             var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
+		             
+		//             // Put together our final background position
+		//             var coords = '50% '+ yPos + 'px';
+		 
+		//             // Move the background
+		//             $bgobj.css({ backgroundPosition: coords });
+		//         }); 
+		//     });    
+		// }); 
+
+
+	</script>
+
+
+</body>
+</html>
