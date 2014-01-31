@@ -739,6 +739,20 @@
 				duration = null;
 			}
 
+			if (window.CustomEvent) {
+		    var event = new CustomEvent("carouselMove", {
+		      detail: {
+		        message: 'test',
+		        time: new Date(),
+		      },
+		      bubbles: true,
+		      cancelable: true
+		    });
+		  
+		    document.dispatchEvent(event);
+		    console.log('Idispatched;')
+		  }
+
 			return this
 				.each(function() {
 					var j, range,

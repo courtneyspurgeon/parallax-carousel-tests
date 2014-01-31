@@ -185,6 +185,26 @@
 	background: green;
 	z-index: 0;
 }
+
+#carousel-chars {
+  position: relative;
+  width: 100%;
+  top: -150px;
+}
+#carousel-chars .char {
+  height: 200px;
+  width: 90px;
+  background: #000;
+  position: absolute;
+  top: 0px;
+  color: #fff;
+}
+#carousel-chars .left-char {
+  left: -800px;
+}
+#carousel-chars .right-char {
+  right: -800px;
+}
 	</style>
 </head>
 <body>
@@ -210,30 +230,49 @@
 				<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div>
 				<div id="round-about">
 					<ul id="carousel">
-					   <li>  
+					   <li id="aladdin">  
 						   	<video id="video1" controls width="300">
 						    <source src="assets/video/mov_bbb.mp4" type="video/mp4">
 						    <source src="assets/video/mov_bbb.ogg" type="video/ogg">
 						    Your browser does not support HTML5 video.
 						  </video>
 						</li>
-						<li>  
+						<li id="beauty">  
 								<video id="video2" controls width="300">
 						    <source src="assets/video/mov_bbb.mp4" type="video/mp4">
 						    <source src="assets/video/mov_bbb.ogg" type="video/ogg">
 						    Your browser does not support HTML5 video.
 						  </video>
 						</li>
-					   <li><img src="assets/img/image.jpg"></li>
-					   <li><img src="assets/img/image.jpg"></li>
-					   <li><img src="assets/img/image.jpg"></li>
-					   <li><img src="assets/img/image.jpg"></li>
-					   <li><img src="assets/img/image.jpg"></li>
-					   <li><img src="assets/img/image.jpg"></li>
+					   <li id="cinderella"><img src="assets/img/image.jpg"></li>
+					   <li id="aladdin"><img src="assets/img/image.jpg"></li>
+					   <li id="pooh"><img src="assets/img/image.jpg"></li>
+					   <li id="beauty"><img src="assets/img/image.jpg"></li>
 					</ul>
 					<span class="prev-round">prev</span>
     				<span class="next-round">next</span>
 				</div>
+
+        <div id="carousel-chars">
+          <ul>
+            <li id="cinderella">
+              <div class="left-char char">Cinderella Char</div>
+              <div class="right-char char">Cinderella Char</div>
+            </li>
+            <li id="aladdin">
+              <div class="left-char char">Aladdin Char</div>
+              <div class="right-char char">Aladdin Char</div>
+            </li>
+            <li id="pooh">
+              <div class="left-char char">Pooh Char</div>
+              <div class="right-char char">Pooh Char</div>
+            </li>
+            <li id="beauty">
+              <div class="left-char char">Beauty and the Beast Char</div>
+              <div class="right-char char">Beauty and the Beast Char</div>
+            </li>
+          </ul>
+        </div>
 					
 					
 
@@ -304,13 +343,53 @@
 	<script type="text/javascript" src="assets/js/simple.carousel.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+      var event = new Event('build');
+
+
 			$('#carousel').roundabout({
 				btnNext: ".next-round",
 				btnPrev: ".prev-round",
 				minOpacity: 0,
 				minScale: 0.2,
 				tilt: -2.1
-			});
+			}, onRoundAboutComplete);
+      //$('#carousel').addEventListener("animate", animateEvent, false);
+
+      var onRoundAboutComplete = function(){
+        console.log('on roundabout');
+      }
+
+    var $carousel = $('#carousel');
+    $carousel.on('animationStart', function(e) {
+        console.log('animation started');
+        childIndex = $carousel.roundabout("getChildInFocus");
+        childId = $carousel.children()[childIndex].id;
+        //console.log(e);
+        if (childId !== '') {
+          // animate out old chars
+          $( ".current-char-in.left-char" ).animate({
+            left: "-800",
+          }, 500);
+          $( ".current-char-in.right-char" ).animate({
+            right: "-800",
+          }, 500);
+
+          //animate in new chars
+          console.log('have child id');
+          $( "#"+childId+' .left-char' ).animate({
+            left: "100",
+          }, 300).addClass('current-char-in');
+          $( "#"+childId+' .right-char' ).animate({
+            right: "100",
+          }, 300).addClass('current-char-in');
+          // $( "#"+childId+' .left-char' ).animate(
+          //   { "left" : "100" }, 400, "easeOutBounce").addClass('current-char-in');
+          // $( "#"+childId+' .right-char' ).animate(
+          //   { "right" : "100" }, 400, "easeOutBounce").addClass('current-char-in');
+        }
+        
+    });
+      
 
 			$("#home-promo").simplecarousel({
                 width:200,
