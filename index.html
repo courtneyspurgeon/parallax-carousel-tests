@@ -198,12 +198,47 @@
   position: absolute;
   top: 0px;
   color: #fff;
+  -webkit-animation: .3s ease-out;
+  animation: .3s ease-out;
+}
+#carousel-chars .char:hover {
+  animation-name: smallJump;
+  -webkit-animation-name: smallJump;
+  border: 2px solid red;
 }
 #carousel-chars .left-char {
   left: -800px;
 }
 #carousel-chars .right-char {
   right: -800px;
+}
+/* Top Jump */
+@-webkit-keyframes smallJump {
+  0% {
+    -webkit-transform: translateY(5%);
+  }
+
+  60% {
+    -webkit-transform: translateY(-2%);
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+
+@keyframes smallJump {
+  0% {
+    transform: translateY(5%);
+  }
+
+  60% {
+    transform: translateY(-2%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
 }
 	</style>
 </head>
